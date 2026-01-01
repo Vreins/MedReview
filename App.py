@@ -278,6 +278,7 @@ elif selected == "Sentiment Identifier":
             show_reviews(neg_reviews) if neg_reviews else st.info("No negative reviews found.")
         
         add_review_section(choice,filtered_data["Condition"].iloc[0],filtered_data["Description"].iloc[0], filtered_data["Sides"].iloc[0])
+        return None
 
     view_option = st.radio(
     "Select drug by condition or drug:",
