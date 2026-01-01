@@ -1,11 +1,20 @@
 import re
 import nltk
+from nltk.corpus import stopwords
 wn = nltk.WordNetLemmatizer()
-stopwords = nltk.corpus.stopwords.words('english')
+# stopwords = nltk.corpus.stopwords.words('english')
 
 # sid = SentimentIntensityAnalyzer()
 #     sentiment_dict=sid.polarity_scores(text)
 #     return sentiment_dict['compound']
+
+def get_stopwords():
+    try:
+        return stopwords.words("english")
+    except LookupError:
+        nltk.download("stopwords")
+        return stopwords.words("english")
+stopwords = set(get_stopwords())
 
 def review_clean(review: str):
     # changing to lower case
